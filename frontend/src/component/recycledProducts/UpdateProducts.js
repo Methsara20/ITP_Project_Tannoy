@@ -19,10 +19,10 @@ const UpdateProductForm = ({ product, onSave, onCancel }) => {
   };
 
   return (
-    <div className="window">
-    <div className="window-content">
-      <h3>Update Product</h3>
-      <form onSubmit={handleSubmit}>
+    <div id="window">
+    <div id="window-content">
+      <h2>Update Product</h2>
+      <form onSubmit={handleSubmit} className='update-form'>
         <div className="form-group">
           <label>Product Name</label>
           <input 

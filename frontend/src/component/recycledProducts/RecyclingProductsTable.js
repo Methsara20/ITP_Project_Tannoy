@@ -71,9 +71,10 @@ const RecyclingProductsTable = () => {
   };
 
   return (
-    <div style={{display : "flex"}}>
-      <RecycleProductSidebar />
-      <div className='component-div'>
+    <div id='body-div'>
+        <div id='sidebar-section'>
+        < RecycleProductSidebar /></div>
+        <div id='component-div'>
         <div>
           <div className='page-title-div'>
             <h2 className='re-page-title'>Recycling Products List</h2>

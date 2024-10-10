@@ -50,11 +50,11 @@ const RecycleProductsDashboard = () => {
 
   return (
     <>
-    <div className='recycle-product-body'>
-    <div >
-       <RecycleProductSidebar />
-    <div className='component-div'>
-    <div id='recycle-product-dashbord'>
+    <div id='body-div'>
+        <div id='sidebar-section'>
+        < RecycleProductSidebar /></div>
+        <div id='component-div'>
+        <div id='recycle-product-dashbord'>
         <div id='RecycleProductsDashBoard'>
            <div id='RecycleProductsLeftDiv'>
                 <div>
@@ -86,7 +86,6 @@ const RecycleProductsDashboard = () => {
                 </ul>
             </div>
         </div>
-    </div>
     </div>
     </div>
     </div>

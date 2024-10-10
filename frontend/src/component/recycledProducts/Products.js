@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import './RecycledProducts.css'; 
+import './Products.css'; 
 import RecycleProductSidebar from './RecycleProductSidebar';
 import UpdateProductForm from './UpdateProducts';
 
@@ -110,77 +110,80 @@ const ProductsTable = () => {
   
 
   return (
-    <div style={{ display: "flex" }}>
-      <RecycleProductSidebar />
-      <div className='component-div'>
-        <div>
-          <h2 className="product-title">Products List and Report</h2>
-        </div>
-        <div className='page-title-div'>
-          <input
-            type="text"
-            placeholder="Search by Product Name"
-            id='search-product-input'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <input
-            type="date"
-            className='date-input'
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-          <input
-            type="date"
-            className='date-input'
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-          <button id='AddProductButton' onClick={() => window.location.href = '/add-product'}>Add Product</button>
-          <button id='GenerateReportButton' onClick={generateReportCSV}>Generate CSV Report</button>
-          <button id='GeneratePDFButton' onClick={generateReportPDF}>Generate PDF Report</button>
-        </div>
-        <div id='table-div'>
-          <table className='recycled-table'>
-            <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Product ID</th>
-                <th>Quantity</th>
-                <th>Quality</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Update</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.map(product => (
-                <tr key={product._id}>
-                  <td>{product.productName}</td>
-                  <td>{product.productId}</td>
-                  <td>{product.quantity}</td>
-                  <td>{product.quality}</td>
-                  <td>{formatDate(product.date)}</td>
-                  <td>{product.status}</td>
-                  <td>
-                    <button id='update-button' onClick={() => handleUpdate(product)}>Update</button>
-                  </td>
-                  <td>
-                    <button id='delete-button' onClick={() => handleDelete(product._id)}>Delete</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {isEditing && currentProduct && (
-            <UpdateProductForm 
-              product={currentProduct} 
-              onSave={handleSave} 
-              onCancel={() => setIsEditing(false)} 
+    <div id='body-div'>
+        <div id='sidebar-section'>
+        < RecycleProductSidebar /></div>
+        <div id='component-div'>
+          <div id='sub-component-div'>
+          <div>
+            <h2 className="product-title">Products List and Report</h2>
+          </div>
+          <div className='page-title-div'>
+            <input
+              type="text"
+              placeholder="Search by Product Name"
+              id='search-product-input'
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-          )}
+            <input
+              type="date"
+              className='date-input'
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+            <input
+              type="date"
+              className='date-input'
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+            <button id='AddProductButton' onClick={() => window.location.href = '/add-product'}>Add Product</button>
+            <button id='GenerateReportButton' onClick={generateReportCSV}>Generate CSV Report</button>
+            <button id='GeneratePDFButton' onClick={generateReportPDF}>Generate PDF Report</button>
+          </div>
+          <div id='table-div'>
+            <table className='recycled-table'>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Product ID</th>
+                  <th>Quantity</th>
+                  <th>Quality</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map(product => (
+                  <tr key={product._id}>
+                    <td>{product.productName}</td>
+                    <td>{product.productId}</td>
+                    <td>{product.quantity}</td>
+                    <td>{product.quality}</td>
+                    <td>{formatDate(product.date)}</td>
+                    <td>{product.status}</td>
+                    <td>
+                      <button id='update-button' onClick={() => handleUpdate(product)}>Update</button>
+                    </td>
+                    <td>
+                      <button id='delete-button' onClick={() => handleDelete(product._id)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {isEditing && currentProduct && (
+              <UpdateProductForm 
+                product={currentProduct} 
+                onSave={handleSave} 
+                onCancel={() => setIsEditing(false)} 
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

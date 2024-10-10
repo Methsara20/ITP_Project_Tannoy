@@ -1,8 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
+import axios from "axios";
 import './UpdateRecycleProduct.css'; 
 
 const UpdateProductForm = ({ product, onSave, onCancel }) => {
     const [formData, setFormData] = useState({ ...product });
+    const [rawMaterials, setRawMaterials] = useState([]);
+
+    // Fetch raw material data from the API
+    useEffect(() => {
+      const fetchRawMaterials = async () => {
+        try {
+          const response = await axios.get("http://localhost:5000/api/items");
+          setRawMaterials(response.data);
+        } catch (error) {
+          console.error("Error fetching Raw Material Name :", error);
+        }
+      };
+      fetchRawMaterials();
+    }, []);
   
     const formatDate = (timestamp) => {
       const date = new Date(timestamp);
@@ -23,18 +38,26 @@ const UpdateProductForm = ({ product, onSave, onCancel }) => {
     };
   
     return (
-      <div className="window">
-        <div className="window-content">
-          <form onSubmit={handleSubmit}>
+      <div id="window">
+        <div id="window-content">
+          <h2>Update Recycle Product</h2>
+          <form onSubmit={handleSubmit}  className='update-form'>
             <div className='lebel-div'>
               <label className='window-lebel'>Raw Material Name:</label>
-              <input className='input-fields'
-                type="text"
-                name="recyclingProductName"
-                value={formData.recyclingProductName}
-                onChange={handleChange}
-                required
-              />
+              <select className='input-fields'
+              name="recyclingProductName" 
+              value={formData.recyclingProductName}
+              onChange={handleChange}
+              required>
+                {rawMaterials.map((item) => (
+                  <option 
+                    key={item.itemName} 
+                    value={item.itemName}
+                  >
+                    {item.itemName}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className='lebel-div'>
               <label className='window-lebel'>Quantity:</label>

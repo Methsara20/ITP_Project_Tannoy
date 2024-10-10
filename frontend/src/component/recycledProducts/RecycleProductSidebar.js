@@ -4,7 +4,7 @@ import './RecycleProductSidebar.css';
 const Sidebar = () => {
     return (
         <>
-        <div className="sidebar">
+        <div id="sidebar">
             <ul>
                 <a href="/recycle-product-dashbord"><li>Recycle Dashboard</li></a>
                 <a href="/recycling-products"><li>Recycling Products</li></a>

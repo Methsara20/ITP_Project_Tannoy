@@ -1,9 +1,18 @@
-.component-div {
-  display: inline-block;
+#component-div {
+  display: inline-flex  !important;
   vertical-align: top;
-  width: 100%; 
-  margin-left: 200px;
+  width: 100%!important;
 }
+#sidebar-section{
+  display: inline-flex  !important;
+  position: sticky;
+  width: 25% !important;
+}
+
+#body-div{
+  display: flex !important;
+}
+
 #recycle-product-dashbord{
   margin: 0px;
   display: flex;
@@ -20,7 +29,7 @@
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  padding: 0px 100px;
+  padding: 0px 100px 0px 0px;
 }
 
 #RecycleProductsLeftDiv{

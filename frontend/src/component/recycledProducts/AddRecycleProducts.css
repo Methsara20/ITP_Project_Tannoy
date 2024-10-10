@@ -1,6 +1,17 @@
-.add-form-body{
-    display: flex;
-}
+#component-div {
+    display: inline-flex  !important;
+    vertical-align: top;
+    width: 100%!important;
+  }
+  #sidebar-section{
+    display: inline-flex  !important;
+    position: sticky;
+    width: 25% !important;
+  }
+  
+  #body-div{
+    display: flex !important;
+  }
 
 .form-div{
     margin-left: 260px ;
